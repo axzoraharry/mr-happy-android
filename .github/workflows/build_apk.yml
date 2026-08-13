@@ -1,4 +1,4 @@
-name: Build Mr Happy APK
+﻿name: Build Mr Happy APK
 on:
   push:
     branches: [ main ]
@@ -16,10 +16,10 @@ jobs:
           distribution: 'temurin'
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
-      - name: Accept licenses and install SDK
-        run: |
-          yes | sdkmanager --licenses || true
-          sdkmanager "platforms;android-34" "build-tools;34.0.0"
+      - name: Accept licenses
+        run: yes | sdkmanager --licenses || true
+      - name: Install SDK components
+        run: sdkmanager "platforms;android-34" "build-tools;34.0.0"
       - name: Make gradlew executable
         run: chmod +x gradlew
       - name: Build Debug APK
